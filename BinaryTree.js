@@ -9,6 +9,7 @@ function Node(data, left, right) {
     this.left = left;
     this.right = right;
     this.show = show;
+    this.count = 1;
 }
 
 function show() {
@@ -65,13 +66,101 @@ function inOrder(node) {
 // 先序
 function preOrder(node) {
     if (!(node == null)) {
-        
         putstr(node.show() + " ");
-        inOrder(node.right);
+        preOrder(node.left);
+        preOrder(node.right);
+    }
+}
+
+// 后序
+function postOrder(node) {
+    if (!(node == null)) {
+        postOrder(node.left);
+        postOrder(node.right);
+        putstr(node.show() + " ");
+    }
+}
+
+//  二叉查找树查找
+
+// 查找最小值
+function getMin() {
+    var current = this.root;
+    while (!(current.left == null)) {
+        current = current.left;
+    }
+    return current.data;
+}
+
+// 查找最大值
+function getMax() {
+    var current = this.root;
+    while (!(current.right == null)) {
+        current = current.right;
+    }
+    return current.data;
+}
+
+// 查找指定值
+function find(data) {
+    var current = this.root;
+    while (current != null) {
+        if (current.data == data) {
+            return current;
+        }
+        else if (data < current.data) {
+            current = current.left;
+        }
+        else {
+            current = current.right;
+        }
+    }
+    return null;
+}
+
+//  删除节点
+function remove(data) {
+    root = removeNode(this.root, data);
+}
+
+function removeNode(node, data) {
+    if (node == null) {
+        return null;
+    }
+    if (data == node.data) {
+        // 没有子节点
+        if (node.left == null && node.right == null) {
+            return null;
+        }
+        // 没有左子节点的节点
+        if (node.left == null) {
+            return node.right;
+        }
+        // 没有右子节点的节点
+        if (node.right = null) {
+            return node.left;
+        }
+        // 有两个子节点的节点
+        var tempNode = getSmallest(node.right);
+        node.data = tempNode.data;
+        node.right = removeNode(node.right, tempNode.data);
+        return node;
+    }
+    else if (data < node.data) {
+        node.left = removeNode(node.left, data);
+        return node;
+    }
+    else {
+        node.right = removeNode(node.right, data);
+        return node;
     }
 }
 
 
-
-
-
+// 出现次数计数
+function update(data) {
+    var grade = this.find(data);
+    grade.count++;
+    return grade;
+}
+ 
