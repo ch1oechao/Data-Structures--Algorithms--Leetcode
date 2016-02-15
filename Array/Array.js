@@ -138,8 +138,8 @@ num.forEach(square);
 //reduce()方法接受一个函数，返回一个值。
 //该方法会从一个累加值开始，不断对累加值和数组中的后续元素调用该函数，直到数组中的最后一个元素， 最后返回得到的累加值
 
-function add(total, cur) {
-    return total + cur;
+function add(prev, cur) {
+    return prev + cur;
 }
 
 var num = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -202,30 +202,4 @@ function matrix(numrows, numcols, initial) {
 }
 
 var num = matrix(5, 5, 0);
-console.log(num[2][4]); //0
-
-//对象中的数组
-function weekTemps() {
-    this.dataStore = [];
-    this.add = add;
-    this.average = average;
-}
-function add(temp) {
-    this.dataStore.push(temp);
-}
-function average() {
-    var total = 0;
-    for (var i = 0; i < this.dataStore.length; ++i) {
-       total += this.dataStore[i];
-    }
-    return total / this.dataStore.length;
-}
-
-var thisWeek = new weekTemps();
-thisWeek.add(55);
-thisWeek.add(65);
-thisWeek.add(45);
-thisWeek.add(50);
-thisWeek.add(60);
-console.log(thisWeek.average()); //55
- 
+console.log(num[2][4]); // 0 
