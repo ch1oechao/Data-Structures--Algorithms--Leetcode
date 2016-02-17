@@ -1,2 +1,2 @@
-# StudyJS
-Notes of StudyJS
+## JavaScript Data Structures & Algorithms
+ 
