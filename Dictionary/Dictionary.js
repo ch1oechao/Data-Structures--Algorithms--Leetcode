@@ -34,7 +34,7 @@ function Dictionary() {
     };
 
     this.keys = function() {
-        return Object.key(items);
+        return Object.keys(items);
     };
 
     this.getItem = function() {
