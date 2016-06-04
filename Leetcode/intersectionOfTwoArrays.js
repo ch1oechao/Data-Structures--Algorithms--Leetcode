@@ -9,6 +9,21 @@
  * @return {number[]}
  */
 var intersection = function(nums1, nums2) {
+    if (nums1.length < nums2.length) {
+        var tmp = nums1;
+        nums1 = nums2;
+        nums2 = tmp;
+    }
+
+    var sort = function(arr) {
+        Array.prototype.sort.call(arr, function(a, b) {
+            return a - b;
+        });
+    }
+
+    sort(nums1);
+    sort(nums2);
+
     var len1 = nums1.length,
         len2 = nums2.length,
         arr =[],
