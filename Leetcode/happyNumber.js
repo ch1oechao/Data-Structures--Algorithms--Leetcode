@@ -3,15 +3,15 @@
  * @return {boolean}
  */
 var isHappy = function(n) {
+
     var fn = function(num) {
-        if (num < 10) return num * num;
-        return fn(parseInt(num / 10, 10)) + (num % 10) * (num % 10);
+        return num < 10 ? (num * num) : fn(Math.floor(num / 10)) + (num % 10) * (num % 10);
     }
 
-    while (n > 10) {
+    while (n >= 10) {
         n = fn(n)
     }
 
-    return n === 1
+    return n === 1 ||  n === 7
 };
  
